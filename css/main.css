@@ -1,0 +1,32 @@
+* {
+    font-family: helvetica, Times, courier;
+
+
+}
+
+.logo {
+    background-color: darkslategray;
+    text-align: center;
+    color: White;
+    padding: 10px;
+    border-style: groove;
+    border-width: 2px;
+    border-color: black;
+}
+
+.logo:hover {
+    background-color: #3F6B6B;
+    
+}
+
+header a {
+    text-decoration: none;
+}
+
+li {
+    font-size: 25px;
+}
+
+p {
+    font-size: 20px;
+}

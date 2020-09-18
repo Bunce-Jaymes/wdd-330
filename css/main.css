@@ -69,10 +69,10 @@ footer p {
 }
 
 #noteDetails {
-    width: 500px;
-    height: 300px;
+    width: 50%;
+    min-height: 150px;
 }
 
 #noteName {
-    width: 250px;
+    width: 25%;
 }

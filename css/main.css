@@ -1,6 +1,7 @@
-* {
-    font-family: helvetica, Times, courier;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
 
+* {
+    font-family: 'Open Sans';
 
 }
 
@@ -49,4 +50,29 @@ footer p {
     text-align: center;
     padding-top: 5px;
     
+}
+
+#explain {
+    font-size: 14px;
+    color: gray;
+}
+
+.noteButton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
+#noteDetails {
+    width: 500px;
+    height: 300px;
+}
+
+#noteName {
+    width: 250px;
 }

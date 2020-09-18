@@ -4,27 +4,39 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <link href="../css/main.css" rel="stylesheet" type="text/css">
-    
+
     <title>WDD 330 Portfolio</title>
 </head>
 
 <body>
-        <header>
-            <a href="../index.html">
-                <h1 class="logo">WDD 330 Portfolio - Jaymes Bunce</h1>
-            </a>
-        </header>
-
-  <p>Content will go here</p>
-
-       
-        <footer>
-            <p>Created by Jaymes Bunce</p>
-        </footer>
-</body>
+    <header>
+        <a href="../index.html">
+            <h1 class="logo">WDD 330 Portfolio - Jaymes Bunce</h1>
+        </a>
+    </header>
     
-    <script src="js/main.js"></script>
+    <a href="../index.html">Back</a>
 
-</html>
+    <h1>Doing Stuff with Web Things - Example of Local Storage:</h1>
+
+    <p id="explain">This application will take the note and name and store them locally</p>
+    
+    <div id="noteApp">
+
+        <p>Notes:</p>
+        <input id="noteName" placeholder="Note Name" autofocus>
+        <p></p>
+        <textarea id="noteDetails" placeholder="Enter the details of your note here."></textarea>
+        <p></p>
+        <button class="noteButton" onclick="saveNote()">Save Note</button>
+        <button class="noteButton" onclick="editNote()">Edit Note</button>
+        <button class="noteButton" id="removeNotes" onclick="clearNotes()">Removed Saved Notes</button>
+        
+        <ul id="localNotes"></ul>
+
+    </div>
+</body>
+
+<script type="text/javascript" src="../js/noteApp.js"></script></html>

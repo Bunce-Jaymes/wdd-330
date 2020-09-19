@@ -18,10 +18,14 @@
     </header>
     
     <a href="../index.html">Back</a>
-
+    
+    <h2>Notes for Week 1:</h2>
+    
+    <p>This week was focused on getting the groundwork of GitHub and beginning to reacquaint my self with web design again. One of the biggest items we learned about this week was Mobile first design which I believe will be vital to my success in this class and future web design projects. Before I was always designing my website on my laptop screen so everything would fit and work well for a computer. This time though I am focusing on keeping my site simple and building for my phone first. I even created a preset in the dev tools so I can see exactly what the site will look like on my phone. I also re-created below an example of the local storage example from the Doing Stuff with Web Things book. But I also challenged my self to add to the program to test my abilities and help me get back in the grove of HTML, CSS, and JS. In this case the application displays messages to let you know when or if a note was loaded successfully. It also pulls the data from local storage and displays the titles of each note below. I will spend more time to re-learn these languages and get back into the grove of things. </p>
+    
     <h1>Doing Stuff with Web Things - Example of Local Storage:</h1>
 
-    <p id="explain">This application will take the note and name and store them locally</p>
+    <p id="explain">This application will take the note and name and store them locally. Enter a note titles and note details below. Then click the save note button. If you type in a title of a saved note it will load the note and note details into the note boxes when you click the edit note button.</p>
     
     <div id="noteApp">
 
@@ -34,6 +38,8 @@
         <button class="noteButton" onclick="editNote()">Edit Note</button>
         <button class="noteButton" id="removeNotes" onclick="clearNotes()">Removed Saved Notes</button>
         
+        
+        <p>Saved Notes Titles:</p>
         <ul id="localNotes"></ul>
 
     </div>

@@ -67,6 +67,17 @@ footer p {
   font-size: 14px;
 }
 
+#quizNinja {
+  background-color: darkslategray;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+
 #noteDetails {
     width: 50%;
     min-height: 150px;
@@ -76,6 +87,6 @@ footer p {
     width: 25%;
 }
 
-#week2List li {
+.week2List li {
     font-size: 20px;
 }

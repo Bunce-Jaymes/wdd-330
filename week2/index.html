@@ -24,16 +24,44 @@
 
     <h3>Chapter 2 Notes:</h3>
 
-    <ul id="week2List">
-        <li>Use the key word "const" to declare a variable that will no be reassigned later in a program. Use key word "let" to declare a vairable that could be changed later in the program.</li>
+    <ul class="week2List">
+        <li>Use the key word "const" to declare a variable that will no be reassigned later in a program. Use key word "let" to declare a variable that could be changed later in the program.</li>
         <li>"If the variable references a non-primitive data type, such as an array, function or object, then using const will not make it immutable. This means the underlying data inside the object can change (known as mutating the object)"</li>
         <li>Template Literals are special strings that use ` to deliminate the string: `Hello`; This also allows us to add variables to strings: `Hello ${name}"</li>
         <li>Symbols are a new primitive value that are used to create unique values to help avoid naming collisions. Use Symbol() to create these</li>
     </ul>
-
-    <a href="quizNinja.html" target="_blank">Quiz Ninja Example</a>
     
-    <script src="../js/noteApp.js"></script>
+    <h3>Chapter 3 Notes:</h3>
+    
+    <p>As this chapter focused more on Arrays, Sets, Maps, and Loops I wanted to practice this and wrote code for them. I have outputted my practice to the console. (Note there are a lot of examples for chapter 3 as I was doing every example before and decided it would be better of my study time to practice any concepts I was less familiar with or were new to me)</p>
+    
+    <ul class="week2List">
+        <li>Sets are very much like an array but it does not allow for duplicate values. This is useful for tracking data without checking if a value was duplicated.</li>
+        <li>When adding to a set set strings will be broken into each character unless they are added with .add("string").</li>
+        <li>"All non-primitive values, such as arrays and objects, are considered unique values, even if they contain the same values"</li>
+        <li>A memory leak occurs when a program retains references to values that can no longer be accessed in its memory. This means that memory is being used to store values that are no longer required by the program, effectively wasting system resources</li>
+        <li>You can use ? in a if else statement, for example: x === 0 ? (code if true) : (code if false). Not sure how much I will use this as it confuses my brain a bit.</li>
+        <li>Use switch to replace big if else statements.</li>
+        <li>for (initialization ; condition ; after) { do something }</li>
+
+    </ul>
+    
+    <h3>Chapter 4 Notes:</h3>
+    
+    <p>As this chapter focused on Functions I wanted to practice this and wrote code for them. I have outputted my practice to the console.</p>
+    
+    <ul class="week2List">
+        <li>Sets are very much like an array but it does not allow for duplicate values. This is useful for tracking data without checking if a value was duplicated.</li>
+        <li>Default parameters should always come after non-default parameters, otherwise default values will always have to be entered anyway</li>
+        <li>"The filter() method returns a new array that only contains items from the original array that return true when passed to the callback"</li>
+        <li>The reduce() method is another method that iterates over each value in the array, but this time it cumulatively combines each result to return just a single value."</li>
+    </ul>
+
+    <a href="quizNinja.html" target="_blank" id="quizNinja">Quiz Ninja Example</a>
+    
+    <p></p>
+    
+    <script src="../js/chapter3&4.js"></script>
 
 </body>
 

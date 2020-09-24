@@ -79,6 +79,11 @@ console.log(avengers);
 avengers.splice(2,1);
 console.log(avengers);
 
+//Reverse
+console.log(avengers.reverse());
+
+//Sort
+
 //const question = "What is Superman's real name?";
 //const answer = prompt(question);
 //alert(`You answered ${answer}`);

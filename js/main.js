@@ -7,7 +7,7 @@ const links = [
         label: "Week 2 Notes/Code",
         url: "week2/index.html"
     }
-]
+];
 
 const myList = document.getElementById("weekList");
 

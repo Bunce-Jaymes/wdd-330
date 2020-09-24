@@ -76,3 +76,7 @@ footer p {
 #noteName {
     width: 25%;
 }
+
+#week2List li {
+    font-size: 20px;
+}

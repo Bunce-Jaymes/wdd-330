@@ -117,3 +117,36 @@ const pdf = /.*\.pdf$/;
 
 console.log(pdf.test('text.pdf'));
 console.log(pdf.test('excel.doc'));
+
+const testDiv = document.getElementById('testDiv');
+console.log(testDiv);
+
+const testDivClass = document.getElementsByClassName('testDivClass');
+console.log(testDiv);
+
+const testQuery = document.querySelectorAll('.testDivClass');
+
+const bMan = document.querySelector('.hero');
+
+console.log(bMan.textContent);
+console.log(bMan.nodeValue);
+
+const textNode = bMan.firstChild;
+console.log(textNode);
+
+console.log(bMan.getAttribute('class'));
+
+bMan.setAttribute('class', 'capedHero');
+
+console.log(bMan.getAttribute('class'));
+
+const flash = document.createElement('p');
+const flashText = document.createTextNode('Flash');
+
+flash.appendChild(flashText);
+
+bMan.appendChild(flash);
+
+flash.style.border = "red 3px solid";
+
+console.log(getComputedStyle(flash));

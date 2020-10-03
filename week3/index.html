@@ -38,9 +38,30 @@
         <li>Functions are not permitted values
         <li>Best practice to pass parameters to date constructor like so: "new Date(year,month,day,hour,minutes,seconds,milliseconds)"</li>
         <li>RegExp is " is a pattern that can be used to search strings for matches to the pattern. A common use is “find and replace” type operations."</li>
-
-
     </ul>
+
+    <h3>Chapter 6 Notes:</h3>
+
+    <ul class="week2List">
+        <li>document.querySelector() is one of the most useful item I will use. It allows you to grab items by CSS notation.</li>
+        <li>"document.querySelector('li:last-child')" allows to grab the last item.</li>
+    </ul>
+
+    <h3>Chapter 7 Notes:</h3>
+
+    <ul class="week2List">
+        <li>" the event listener will let it
+            know when the event happens, and the program can then respond appropriately."</li>
+        <li>Make sure you think carefully before using preventDefault() to change default
+            behavior. Users will expect certain behaviors, and preventing them may cause
+            confusion.
+            Some events do not allow the default behavior to be prevented. This can vary from
+            browser to browser, but each event object has a property called cancellable that
+            returns false if it cannot be prevented.
+            You can also see if the default behavior has been prevented by checking the
+            defaultPrevented property.</li>
+    </ul>
+
 
     <a href="quizNinja.html" target="_blank" class="linkButton">Quiz Ninja Example</a>
 
@@ -49,6 +70,15 @@
     <a href="teamActivity.html" class="linkButton">Team Assignment</a>
 
     <p></p>
+
+    <a href="eventPractice.html" class="linkButton">Events Practice</a>
+
+    <p></p>
+
+    <div id="testDiv" class="testDivClass">
+        <li class='hero'>Batman</li>
+        <p class="p">other test</p>
+    </div>
 
     <script src="../js/week3.js"></script>
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="wdd, 330, jaymes, bunce, week 2, wdd-330">
+    <link rel="icon" href="../img/favicon.ico" type="image/ico" sizes="16x16">
+    <link href="../css/main.css" rel="stylesheet" type="text/css">
+    <link href="../css/todo.css" rel="stylesheet" type="text/css">
+
+    <title>WDD 330 - Todo</title>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html">
+            <h1 class="logo">WDD 330 Portfolio - Jaymes Bunce</h1>
+        </a>
+    </header>
+
+    <a href="../index.html">Back</a>
+
+    <div id="todoBoard">
+        <div id="todoBoardList">
+            <h2>Todo List:</h2>
+            <ul>
+                <li class="Item">
+                    <input type="checkbox">
+                    <label>Wash the Dishes</label>
+                    <button class="todoButton">X</button>
+                </li>
+                <li class="Item">
+                    <input type="checkbox">
+                    <label>First item</label>
+                    <button class="todoButton">X</button>
+                </li>
+            </ul>
+
+            <div id="filterDiv">
+                <p id="tasksLeft">_ tasks left</p>
+                <button id="allTasksButton" class="todoButton">All</button>
+                <button id="allCurrentButton" class="todoButton">Current</button>
+                <button id="allCompletedButton" class="todoButton">Completed</button>
+            </div>
+
+
+            <div id="addNewItemDiv">
+                <textarea id="newItemInput" placeholder="Enter an new Item todo..."></textarea>
+                <button id="addNewItem" class="todoButton">➕</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="../js/todo.js"></script>
+</body></html>

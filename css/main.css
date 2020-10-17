@@ -135,7 +135,6 @@ footer p {
     grid-template-columns: 100px 100px 100px;
     grid-template-rows: 100px 100px 100px;
     justify-content: center;
-    padding-left:
 }
 
 .board > div {
@@ -180,4 +179,9 @@ footer p {
 
 #reset {
     padding: 10px;
+}
+
+nav {
+    display: grid;
+    justify-content: center;
 }

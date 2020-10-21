@@ -12,7 +12,7 @@ li {
     background-color: white;
 }
 
-li label {
+li p {
     word-wrap: normal;
     
 /*
@@ -133,4 +133,13 @@ input:checked {
 
 #addNewItem:hover {
     background-color: #4CAF50;
+}
+
+.currentFiliter {
+    background-color: darkslategray;
+    border: solid 1px; 
+}
+
+.taskComplete {
+    text-decoration: line-through;
 }

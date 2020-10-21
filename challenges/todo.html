@@ -24,21 +24,11 @@
     <div id="todoBoard">
         <div id="todoBoardList">
             <h2>Todo List:</h2>
-            <ul>
-                <li class="Item">
-                    <input type="checkbox">
-                    <label>Wash the Dishes</label>
-                    <button class="todoButton">X</button>
-                </li>
-                <li class="Item">
-                    <input type="checkbox">
-                    <label>First item</label>
-                    <button class="todoButton">X</button>
-                </li>
+            <ul id="listOfItemsToDo">
             </ul>
 
             <div id="filterDiv">
-                <p id="tasksLeft">_ tasks left</p>
+                <p id="tasksLeft"></p>
                 <button id="allTasksButton" class="todoButton">All</button>
                 <button id="allCurrentButton" class="todoButton">Current</button>
                 <button id="allCompletedButton" class="todoButton">Completed</button>
@@ -53,5 +43,5 @@
 
     </div>
 
-    <script type="module" src="../js/todo.js"></script>
+    <script src="../js/todo/todo.js"></script>
 </body></html>

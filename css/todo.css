@@ -73,7 +73,7 @@ input:checked {
     grid-column-gap: 0.5;
     border: solid 1px;
     grid-column-gap: 10px;
-    padding: 10px;
+    padding: 11px;
     background-color: white;
     align-items: center;
     
@@ -153,4 +153,8 @@ li.taskComplete {
 
 .hidden {
     display: none;
+}
+
+#addNewItemDiv #newItemInput {
+    
 }

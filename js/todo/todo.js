@@ -9,7 +9,7 @@ function showList(filiterValue) {
     while (child) {
         listOfTasks.removeChild(child);
         child = listOfTasks.lastElementChild;
-    };
+    }
 
     if (filiterValue === "all") {
         if (todoListItemsArray !== null) {
@@ -38,7 +38,7 @@ function showList(filiterValue) {
                     listItemLabel.classList.add('taskComplete');
                     listItem.classList.add('taskComplete');
                     listItemInput.checked = true;
-                };
+                }
 
                 //Adding them all together
                 listItem.appendChild(listItemInput);
@@ -52,7 +52,7 @@ function showList(filiterValue) {
             document.querySelector('#allCurrentButton').classList.remove('currentFiliter');
             document.querySelector('#allCompletedButton').classList.remove('currentFiliter');
         }
-    };
+    }
 
     if (filiterValue === "current") {
         if (todoListItemsArray !== null) {
@@ -83,7 +83,7 @@ function showList(filiterValue) {
                         listItemLabel.classList.add('taskComplete');
                         listItem.classList.add('taskComplete');
                         listItemInput.checked = true;
-                    };
+                    }
 
                     //Adding them all together
                     listItem.appendChild(listItemInput);
@@ -98,9 +98,9 @@ function showList(filiterValue) {
             document.querySelector('#allTasksButton').classList.remove('currentFiliter');
             document.querySelector('#allCompletedButton').classList.remove('currentFiliter');
         }
-    };
-    
-    
+    }
+
+
     if (filiterValue === "completed") {
         if (todoListItemsArray !== null) {
             for (let i = 0; i < todoListItemsArray.length; i++) {
@@ -130,7 +130,7 @@ function showList(filiterValue) {
                         listItemLabel.classList.add('taskComplete');
                         listItem.classList.add('taskComplete');
                         listItemInput.checked = true;
-                    };
+                    }
 
                     //Adding them all together
                     listItem.appendChild(listItemInput);
@@ -145,12 +145,12 @@ function showList(filiterValue) {
             document.querySelector('#allTasksButton').classList.remove('currentFiliter');
             document.querySelector('#allCurrentButton').classList.remove('currentFiliter');
         }
-    };
-    
-    
+    }
+
+
     totalTasks();
     saveList();
-};
+}
 
 function addItemToList() {
     let newItemText = document.querySelector('#newItemInput').value;
@@ -174,12 +174,12 @@ function addItemToList() {
     document.querySelector('#newItemInput').value = '';
 
     showList(filiterValue);
-};
+}
 
 function totalTasks() {
     const ulList = document.querySelector('#listOfItemsToDo');
     const count = document.querySelector('#tasksLeft');
-    
+
     const lengthOfList = ulList.childElementCount;
 
     if (lengthOfList === null) {
@@ -187,17 +187,17 @@ function totalTasks() {
     } else {
         count.innerHTML = `${lengthOfList} tasks total`;
     }
-};
+}
 
 function saveList() {
     localStorage.setItem("toDoList", JSON.stringify(todoListItemsArray));
-};
+}
 
 function deleteItem() {
     const buttonClicked = event.currentTarget;
 
     let idToBeDeleted = buttonClicked.parentElement.lastElementChild;
-    idToBeDeleted = String(idToBeDeleted.value)
+    idToBeDeleted = String(idToBeDeleted.value);
 
     let removeIndex = todoListItemsArray.map(function (item) {
         return item.id;
@@ -207,7 +207,7 @@ function deleteItem() {
 
     saveList();
     showList(filiterValue);
-};
+}
 
 function checkComplete() {
     const checkboxClicked = event.currentTarget;
@@ -218,7 +218,7 @@ function checkComplete() {
         checkboxClicked.parentElement.classList.add("taskComplete");
 
         let idToBeCompleted = checkboxClicked.parentElement.lastElementChild;
-        idToBeCompleted = String(idToBeCompleted.value)
+        idToBeCompleted = String(idToBeCompleted.value);
 
         let completeIndex = todoListItemsArray.map(function (item) {
             return item.id;
@@ -235,7 +235,7 @@ function checkComplete() {
         checkboxClicked.parentElement.classList.remove("taskComplete");
 
         let idToBeCompleted = checkboxClicked.parentElement.lastElementChild;
-        idToBeCompleted = String(idToBeCompleted.value)
+        idToBeCompleted = String(idToBeCompleted.value);
 
         let completeIndex = todoListItemsArray.map(function (item) {
             return item.id;

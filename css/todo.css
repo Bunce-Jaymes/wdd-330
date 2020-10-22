@@ -75,16 +75,13 @@ input:checked {
     grid-column-gap: 10px;
     padding: 10px;
     background-color: white;
+    align-items: center;
+    
 }
 
 #filterDiv button {
     border: none;
     font-size: 18px;
-}
-
-#filterDiv button:active {
-    border: solid 1px;
-    background-color: darkslategray;
 }
 
 #tasksLeft {
@@ -113,7 +110,7 @@ input:checked {
 #addNewItemDiv {
     display: grid;
     grid-column-gap: 0.25em;
-    padding-top: 12em;
+    padding-top: 2em;
 }
 
 #newItemInput {
@@ -137,9 +134,23 @@ input:checked {
 
 .currentFiliter {
     background-color: darkslategray;
-    border: solid 1px; 
+    border: solid 3px !important;
+    border-radius: none;
+    color: white;
 }
 
-.taskComplete {
+#tasksLeft {
+    text-align: center;
+}
+
+label.taskComplete {
     text-decoration: line-through;
+}
+
+li.taskComplete {
+    background-color: darkslategray;
+}
+
+.hidden {
+    display: none;
 }

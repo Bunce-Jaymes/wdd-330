@@ -1,7 +1,12 @@
-let todoListItemsArray = JSON.parse(localStorage.getItem("toDoList"));
-let filiterValue = "";
+import saveFile from './ls.js';
+const saveOrGetObject = new saveFile();
 
-function showList(filiterValue) {
+import utilitiesFile from './utilities.js';
+const utilitiesObject = new utilitiesFile();
+
+function showList() {
+    let todoListItemsArray = saveOrGetObject.getList();
+    const filterValue = saveOrGetObject.getFilter();
     const listOfTasks = document.querySelector('#listOfItemsToDo');
 
     //deletes everything in list 
@@ -11,7 +16,7 @@ function showList(filiterValue) {
         child = listOfTasks.lastElementChild;
     }
 
-    if (filiterValue === "all") {
+    if (filterValue === "all") {
         if (todoListItemsArray !== null) {
             for (let i = 0; i < todoListItemsArray.length; i++) {
                 const listItem = document.createElement("li");
@@ -23,10 +28,12 @@ function showList(filiterValue) {
                 listItem.classList.add('Item');
                 //checkbox
                 listItemInput.setAttribute('type', 'checkbox');
-                listItemInput.addEventListener('change', checkComplete);
+                listItemInput.addEventListener('change', utilitiesObject.checkComplete);
+                listItemInput.addEventListener('change', showList);
                 //delete button
                 listItemButton.classList.add('todoButton');
-                listItemButton.addEventListener('click', deleteItem);
+                listItemButton.addEventListener('click', utilitiesObject.deleteItem);
+                listItemButton.addEventListener('click', showList);
                 listItemButton.innerHTML = "X";
                 //id
                 listItemID.setAttribute('value', todoListItemsArray[i].id);
@@ -48,13 +55,13 @@ function showList(filiterValue) {
                 listOfTasks.appendChild(listItem);
             }
 
-            document.querySelector('#allTasksButton').classList.add('currentFiliter');
-            document.querySelector('#allCurrentButton').classList.remove('currentFiliter');
-            document.querySelector('#allCompletedButton').classList.remove('currentFiliter');
+            document.querySelector('#allTasksButton').classList.add('currentFilter');
+            document.querySelector('#allCurrentButton').classList.remove('currentFilter');
+            document.querySelector('#allCompletedButton').classList.remove('currentFilter');
         }
     }
 
-    if (filiterValue === "current") {
+    if (filterValue === "current") {
         if (todoListItemsArray !== null) {
             for (let i = 0; i < todoListItemsArray.length; i++) {
 
@@ -68,10 +75,12 @@ function showList(filiterValue) {
                     listItem.classList.add('Item');
                     //checkbox
                     listItemInput.setAttribute('type', 'checkbox');
-                    listItemInput.addEventListener('change', checkComplete);
+                    listItemInput.addEventListener('change', utilitiesObject.checkComplete);
+                    listItemInput.addEventListener('change', showList);
                     //delete button
                     listItemButton.classList.add('todoButton');
-                    listItemButton.addEventListener('click', deleteItem);
+                    listItemButton.addEventListener('click', utilitiesObject.deleteItem);
+                    listItemButton.addEventListener('click', showList);
                     listItemButton.innerHTML = "X";
                     //id
                     listItemID.setAttribute('value', todoListItemsArray[i].id);
@@ -94,14 +103,14 @@ function showList(filiterValue) {
                 }
             }
 
-            document.querySelector('#allCurrentButton').classList.add('currentFiliter');
-            document.querySelector('#allTasksButton').classList.remove('currentFiliter');
-            document.querySelector('#allCompletedButton').classList.remove('currentFiliter');
+            document.querySelector('#allCurrentButton').classList.add('currentFilter');
+            document.querySelector('#allTasksButton').classList.remove('currentFilter');
+            document.querySelector('#allCompletedButton').classList.remove('currentFilter');
         }
     }
 
 
-    if (filiterValue === "completed") {
+    if (filterValue === "completed") {
         if (todoListItemsArray !== null) {
             for (let i = 0; i < todoListItemsArray.length; i++) {
 
@@ -115,11 +124,13 @@ function showList(filiterValue) {
                     listItem.classList.add('Item');
                     //checkbox
                     listItemInput.setAttribute('type', 'checkbox');
-                    listItemInput.addEventListener('change', checkComplete);
+                    listItemInput.addEventListener('change', utilitiesObject.checkComplete);
+                    listItemInput.addEventListener('change', showList);
                     //delete button
                     listItemButton.classList.add('todoButton');
-                    listItemButton.addEventListener('click', deleteItem);
+                    listItemButton.addEventListener('click', utilitiesObject.deleteItem);
                     listItemButton.innerHTML = "X";
+                    listItemButton.addEventListener('click', showList);
                     //id
                     listItemID.setAttribute('value', todoListItemsArray[i].id);
                     listItemID.classList.add('hidden');
@@ -141,149 +152,38 @@ function showList(filiterValue) {
                 }
             }
 
-            document.querySelector('#allCompletedButton').classList.add('currentFiliter');
-            document.querySelector('#allTasksButton').classList.remove('currentFiliter');
-            document.querySelector('#allCurrentButton').classList.remove('currentFiliter');
+            document.querySelector('#allCompletedButton').classList.add('currentFilter');
+            document.querySelector('#allTasksButton').classList.remove('currentFilter');
+            document.querySelector('#allCurrentButton').classList.remove('currentFilter');
         }
     }
 
 
-    totalTasks();
-    saveList();
-}
-
-function addItemToList() {
-    let newItemText = document.querySelector('#newItemInput').value;
-
-    if (todoListItemsArray !== null) {
-        todoListItemsArray.push({
-            id: String(Date.now()),
-            content: newItemText,
-            completed: false
-        });
-    }
-    if (todoListItemsArray === null) {
-        todoListItemsArray = [];
-        todoListItemsArray.push({
-            id: String(Date.now()),
-            content: newItemText,
-            completed: false
-        });
-    }
-
-    document.querySelector('#newItemInput').value = '';
-
-    showList(filiterValue);
-}
-
-function totalTasks() {
-    const ulList = document.querySelector('#listOfItemsToDo');
-    const count = document.querySelector('#tasksLeft');
-
-    const lengthOfList = ulList.childElementCount;
-
-    if (lengthOfList === null) {
-        count.innerHTML = `0 tasks total`;
-    } else {
-        count.innerHTML = `${lengthOfList} tasks total`;
-    }
-}
-
-function saveList() {
-    localStorage.setItem("toDoList", JSON.stringify(todoListItemsArray));
-}
-
-function deleteItem() {
-    const buttonClicked = event.currentTarget;
-
-    let idToBeDeleted = buttonClicked.parentElement.lastElementChild;
-    idToBeDeleted = String(idToBeDeleted.value);
-
-    let removeIndex = todoListItemsArray.map(function (item) {
-        return item.id;
-    }).indexOf(idToBeDeleted);
-
-    todoListItemsArray.splice(removeIndex, 1);
-
-    saveList();
-    showList(filiterValue);
-}
-
-function checkComplete() {
-    const checkboxClicked = event.currentTarget;
-
-    if (checkboxClicked.checked) {
-        const itemToBeCrossed = checkboxClicked.parentElement.children.item(1);
-        itemToBeCrossed.classList.add("taskComplete");
-        checkboxClicked.parentElement.classList.add("taskComplete");
-
-        let idToBeCompleted = checkboxClicked.parentElement.lastElementChild;
-        idToBeCompleted = String(idToBeCompleted.value);
-
-        let completeIndex = todoListItemsArray.map(function (item) {
-            return item.id;
-        }).indexOf(idToBeCompleted);
-
-        todoListItemsArray[completeIndex].completed = true;
-
-        saveList();
-        showList(filiterValue);
-
-    } else {
-        const itemToBeCrossed = checkboxClicked.parentElement.children.item(1);
-        itemToBeCrossed.classList.remove("taskComplete");
-        checkboxClicked.parentElement.classList.remove("taskComplete");
-
-        let idToBeCompleted = checkboxClicked.parentElement.lastElementChild;
-        idToBeCompleted = String(idToBeCompleted.value);
-
-        let completeIndex = todoListItemsArray.map(function (item) {
-            return item.id;
-        }).indexOf(idToBeCompleted);
-
-        todoListItemsArray[completeIndex].completed = false;
-
-        saveList();
-        showList(filiterValue);
-    }
-}
-
-function changeFiliter() {
-    let filiterClicked = event.currentTarget;
-    filiterClicked = String(filiterClicked.id);
-
-    switch (filiterClicked) {
-        case "allCurrentButton":
-            filiterValue = "current";
-            break;
-
-        case "allCompletedButton":
-            filiterValue = "completed";
-            break;
-
-        case "allTasksButton":
-            filiterValue = "all";
-            break;
-    }
-
-    showList(filiterValue);
-
+    utilitiesObject.totalTasks();
 }
 
 window.addEventListener("load", () => {
     const addButton = document.querySelector('#addNewItem');
-    addButton.addEventListener('click', addItemToList);
+    addButton.addEventListener('click', utilitiesObject.addItemToList);
+    addButton.addEventListener('click', showList);
 
     const allButton = document.querySelector('#allTasksButton');
-    allButton.addEventListener('click', changeFiliter);
+    allButton.addEventListener('click', utilitiesObject.changeFilter);
+    allButton.addEventListener('click', showList);
 
     const currentButton = document.querySelector('#allCurrentButton');
-    currentButton.addEventListener('click', changeFiliter);
+    currentButton.addEventListener('click', utilitiesObject.changeFilter);
+    currentButton.addEventListener('click', showList);
 
     const completeButton = document.querySelector('#allCompletedButton');
-    completeButton.addEventListener('click', changeFiliter);
+    completeButton.addEventListener('click', utilitiesObject.changeFilter);
+    completeButton.addEventListener('click', showList);
+    
+    const filter= saveOrGetObject.getFilter();
+    
+    if (filter === null){
+        saveOrGetObject.saveFilter("all");
+    }
 
-    filiterValue = "all";
-
-    showList(filiterValue);
+    showList();
 });

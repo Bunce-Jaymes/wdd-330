@@ -10,18 +10,12 @@ li {
     justify-content: space-between;
     padding: 5px;
     background-color: white;
-    
+
 }
 
 li p {
     word-wrap: normal;
-    
-/*
-    max-width: 500px;
-    max-height: auto;
-*/
 }
-
 
 
 #todoBoard {
@@ -35,6 +29,7 @@ li p {
     font-size: 3em;
     background-color: white;
     border-radius: 10px;
+    border: solid 2px black;
 }
 
 #todoBoardList {
@@ -80,7 +75,7 @@ input:checked {
     background-color: white;
     align-items: center;
     border-radius: 10px;
-    
+
 }
 
 #filterDiv button {
@@ -115,6 +110,7 @@ input:checked {
     display: grid;
     grid-column-gap: 0.25em;
     padding-top: 2em;
+    grid-row-gap: 0.5em
 }
 
 #newItemInput {
@@ -127,14 +123,25 @@ input:checked {
 
 #addNewItem {
     grid-column: 2;
-    font-size: 1.25em;
+    font-size: 2em;
     padding: 0px;
     background-color: darkslategray;
-    border: solid 1px;
+    border: solid 2px black;
+    color: white;
 }
 
-#addNewItem:hover {
+#addNewItem:hover, #removeAllSaved:hover {
     background-color: #4CAF50;
+}
+
+#removeAllSaved {
+    grid-row: 2;
+    grid-column: 1/ span 2;
+    font-size: 1.1em;
+    padding: 7px;
+    background-color: darkslategray;
+    border: solid 2px black;
+    color: white;
 }
 
 .currentFilter {
@@ -160,6 +167,4 @@ li.taskComplete {
     display: none;
 }
 
-#addNewItemDiv #newItemInput {
-    
-}
+#addNewItemDiv #newItemInput {}

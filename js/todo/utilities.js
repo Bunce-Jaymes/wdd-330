@@ -74,9 +74,9 @@ export default class utilities {
     addItemToList() {
         let todoListItemsArray = saveOrGetObject.getList();
         let newItemText = document.querySelector('#newItemInput').value;
-        
+
         newItemText = newItemText.trim();
-        
+
         console.log(newItemText);
 
         if (newItemText !== "") {
@@ -95,7 +95,7 @@ export default class utilities {
                     completed: false
                 });
             }
-            
+
             saveOrGetObject.saveList(todoListItemsArray);
             document.querySelector('#newItemInput').value = '';
         } else {
@@ -120,6 +120,14 @@ export default class utilities {
             case "allTasksButton":
                 saveOrGetObject.saveFilter("all");
                 break;
+        }
+    }
+
+    clearLocal() {
+        const test = confirm("This will remove all your to-do items permanently, would you like to continue?")
+
+        if (test === true) {
+            localStorage.clear();
         }
     }
 }

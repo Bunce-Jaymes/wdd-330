@@ -34,23 +34,28 @@ li {
     margin: 10px;
 }
 
-#weekList > li > a:link,
-a:visited {
+#weekList a:link,
+#weekList a:visited {
     background-color: darkslategray;
     color: white;
     padding: 14px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    border: solid 2px black;
 }
 
-#weekList > li > a:hover,
-footer > a:hover {
+
+#weekList > li > a:hover {
     background-color: #4CAF50;
 }
 
 #mainNav {
     display: grid;
+}
+
+ol {
+    padding-left: 0px;
 }
 
 p {
@@ -59,25 +64,17 @@ p {
 
 footer {
     position: fixed;
-    bottom: 10px;
     left: 0;
+    bottom: 10px;
     width: 100%;
-    font-size: 12px;
-    height: 5%;
+    background-color: darkslategray;
+    color: white;
+    text-align: center;
+    border: solid 2px black;
 }
 
-footer > a {
-    position: fixed;
-    width: 100%;
-    padding: 10px;
-    align-content: center;
-    color: white;
-    margin: 0;
-    text-align: center;
-    padding-top: 5px;
-    font-size: 20px;
-    text-decoration: none;
-    background-color: darkslategray;
+footer p {
+    padding: 
 }
 
 #explain {
@@ -95,6 +92,11 @@ footer > a {
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
+}
+
+.backLink {
+    color: black !important;
+    font-size: 1.1em;
 }
 
 .linkButton {

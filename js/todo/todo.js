@@ -179,6 +179,10 @@ window.addEventListener("load", () => {
     completeButton.addEventListener('click', utilitiesObject.changeFilter);
     completeButton.addEventListener('click', showList);
     
+    const removeLocalButton = document.querySelector('#removeAllSaved');
+    removeLocalButton.addEventListener('click', utilitiesObject.clearLocal);
+    removeLocalButton.addEventListener('click', showList);
+    
     const filter= saveOrGetObject.getFilter();
     
     if (filter === null){

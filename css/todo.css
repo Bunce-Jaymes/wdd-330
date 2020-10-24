@@ -68,7 +68,7 @@ input:checked {
 
 #filterDiv {
     display: grid;
-    grid-column-gap: 0.5;
+    grid-column-gap: 0.5em;
     border: solid 1px;
     grid-column-gap: 10px;
     padding: 11px;
@@ -147,7 +147,6 @@ input:checked {
 .currentFilter {
     background-color: darkslategray;
     border: solid 3px !important;
-    border-radius: none;
     color: white;
 }
 
@@ -166,5 +165,3 @@ li.taskComplete {
 .hidden {
     display: none;
 }
-
-#addNewItemDiv #newItemInput {}

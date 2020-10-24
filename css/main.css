@@ -12,10 +12,11 @@
     border-style: groove;
     border-width: 2px;
     border-color: black;
+    border-radius: 10px;
 }
 
 .logo:hover {
-    background-color: #3F6B6B;
+    background-color: #4CAF50;
 
 }
 
@@ -27,28 +28,56 @@ li {
     font-size: 25px;
 }
 
+#weekList > li {
+    list-style: none;
+    text-align: center;
+    margin: 10px;
+}
+
+#weekList > li > a:link,
+a:visited {
+    background-color: darkslategray;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#weekList > li > a:hover,
+footer > a:hover {
+    background-color: #4CAF50;
+}
+
+#mainNav {
+    display: grid;
+}
+
 p {
     font-size: 20px;
 }
 
 footer {
-    border-top: black;
-    color: black;
     position: fixed;
     bottom: 10px;
     left: 0;
     width: 100%;
     font-size: 12px;
     height: 5%;
-    background-color: darkslategray;
 }
 
-footer p {
+footer > a {
+    position: fixed;
+    width: 100%;
+    padding: 10px;
+    align-content: center;
     color: white;
     margin: 0;
     text-align: center;
     padding-top: 5px;
-
+    font-size: 20px;
+    text-decoration: none;
+    background-color: darkslategray;
 }
 
 #explain {
@@ -166,7 +195,7 @@ footer p {
     padding-bottom: 20px;
 }
 
-#ticTacTitleArea h1{
+#ticTacTitleArea h1 {
     font-size: 2.5em
 }
 

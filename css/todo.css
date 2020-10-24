@@ -10,6 +10,7 @@ li {
     justify-content: space-between;
     padding: 5px;
     background-color: white;
+    
 }
 
 li p {
@@ -33,12 +34,14 @@ li p {
     text-align: center;
     font-size: 3em;
     background-color: white;
+    border-radius: 10px;
 }
 
 #todoBoardList {
     display: grid;
     background-color: grey;
     padding: 2em;
+    border-radius: 10px;
 }
 
 .Item input {
@@ -76,6 +79,7 @@ input:checked {
     padding: 11px;
     background-color: white;
     align-items: center;
+    border-radius: 10px;
     
 }
 
@@ -118,6 +122,7 @@ input:checked {
     resize: none;
     font-size: 18px;
     border: solid 2px;
+    border-radius: 10px;
 }
 
 #addNewItem {

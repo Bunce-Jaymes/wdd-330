@@ -63,7 +63,6 @@ p {
 }
 
 footer {
-    position: fixed;
     left: 0;
     bottom: 10px;
     width: 100%;
@@ -104,6 +103,10 @@ footer {
     text-decoration: none;
     display: inline-block;
     font-size: 25px;
+}
+
+.linkButton:hover {
+    background-color: #4CAF50;
 }
 
 #noteDetails {

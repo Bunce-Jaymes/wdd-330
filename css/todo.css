@@ -113,6 +113,12 @@ input:checked {
     grid-row-gap: 0.5em
 }
 
+#labelInput {
+    grid-row: 1;
+    text-indent: -9999px; 
+}
+
+
 #newItemInput {
     grid-column: 1;
     resize: none;
@@ -135,7 +141,7 @@ input:checked {
 }
 
 #removeAllSaved {
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 1/ span 2;
     font-size: 1.1em;
     padding: 7px;

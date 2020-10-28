@@ -20,7 +20,7 @@ const links = [
         url: "week5/index.html"
     },
     {
-        label: "Week 6 To-Do List Challenge",
+        label: "To-Do List Challenge",
         url: "challenges/todo.html"
     },
     {

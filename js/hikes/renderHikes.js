@@ -1,10 +1,14 @@
 import hikeList from './hikes.js'
+import Comments from './comments.js'
 const imgBasePath = "//byui-cit.github.io/cit261/examples/";
+
+const commentObject = new Comments();
 
 export default class Hikes {
     constructor(elementId) {
         this.parentElement = document.getElementById(elementId);
         this.backButton = this.buildBackButton();
+        this.comments = new Comments('hikes', 'commentsDiv');
     }
 
     showHikeList() {
@@ -12,6 +16,7 @@ export default class Hikes {
         renderHikeList(hikeList, this.parentElement);
         this.addListener();
         this.backButton.classList.add('hidden');
+        this.comments.removeCommentsList();
     }
 
     showOneHike(hikeName) {
@@ -19,6 +24,7 @@ export default class Hikes {
         this.parentElement.innerHTML = '';
         this.parentElement.appendChild(renderFullHike(hike));
         this.backButton.classList.remove('hidden');
+        this.comments.showCommentsList(hikeName);
     }
 
     addListener() {

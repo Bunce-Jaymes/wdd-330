@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="wdd, 330, jaymes, bunce, week 2, wdd-330">
+    <link rel="icon" href="../img/favicon.ico" type="image/ico" sizes="16x16">
+    <link href="../css/main.css" rel="stylesheet" type="text/css">
+    <link href="../css/week8/example.css" rel="stylesheet" type="text/css">
+
+    <title>WDD 330 - Week 8</title>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html">
+            <h1 class="logo">WDD 330 Portfolio - Jaymes Bunce</h1>
+        </a>
+    </header>
+
+    <a href="../index.html" class="backLink">Back</a>
+
+    <h2>Notes for Week 8:</h2>
+
+    <p>See below/console for examples and tests from this week's reading.</p>
+
+    <h3>Chapter 8 Notes:</h3>
+
+    <h4>Put your <span>dukes</span> up, sire</h4>
+    <p id="skewed">Skewed text</p>
+    <p id="bike">Animated man, hover on me!:</p>
+
+    <ul class="week2List">
+        <li>The skew (x,y) function specifies a skew along the x and y axes.</li>
+        <li>To change the origin of the transform use the transform-origin property.</li>
+        <li>The transition-duration property sets how long the transition will take: the
+            duration of time it takes to go from the default state to the transitioned state.</li>
+        <li>The transition-timing-function lets you control the pace of the transition in
+            even more granular detail.</li>
+        <li> A negative time delay that’s less than the duration of the entire
+            transition will cause it to start immediately, but it will start partway through the
+            animation. </li>
+        <li>The transition properties allow for multiple transitions in one call.</li>
+        <li>CSS animations allow you to
+            control each step of an animation via keyframes</li>
+    </ul>
+
+    <h3>Chapter 12 Notes:</h3>
+
+    <canvas id="myCanvas" class="myCanvas">
+        Sorry! Your browser doesn’t support Canvas.
+    </canvas>
+
+    <canvas id="myCanvas2" class="myCanvas">
+        Sorry! Your browser doesn’t support Canvas.
+    </canvas>
+
+    <canvas id="myCanvas3" class="myCanvas">
+        Sorry! Your browser doesn’t support Canvas.
+    </canvas>
+
+    <canvas id="myCanvas4" class="myCanvas">
+        Sorry! Your browser doesn’t support Canvas.
+    </canvas>
+
+    <h4>Save Canvas Drawing:</h4>
+    <canvas id="myCanvas5" class="myCanvas">
+        Sorry! Your browser doesn’t support Canvas.
+    </canvas>
+    <button name="saveButton" id="saveButton">Save Drawing</button>
+
+    <h4>Drawing an image to the canvas</h4>
+    <canvas id="myCanvas6" class="myCanvas">
+        Sorry! Your browser doesn’t support Canvas.
+    </canvas>
+    <img src="../img/favicon.ico" id="myImageElem" alt="img">
+
+    <canvas id="myCanvas7" class="myCanvas">
+        Sorry! Your browser doesn’t support Canvas.
+    </canvas>
+
+<!--
+    <svg viewBox="0 0 400 400">
+        <circle cx="50" cy="50" r="25" fill="red" />
+    </svg>
+
+    <svg viewbox="0 0 400 400">
+        <desc>Drawing a rectangle</desc>
+        <rect x="10" y="10" width="100" height="100" fill="blue" stroke="red" stroke-width="3" />
+    </svg>
+-->
+    
+    <h2 id="catHeading">Temp</h2>
+
+<p id="mouseContainer" class="mc">
+ <img src="../images/week8/bike_sprite.png" id="mouse1" draggable="true" alt="img">
+    
+     <img src="../img/favicon.ico" id="cat" alt="WAI-ARIA Cat">
+    
+
+
+
+    <ul class="week2List">
+        <li>Canvas uses a coordinate system in the canvas elements.</li>
+        <li>You can use the same process on a canvas for changing color of img for videos as well.</li>
+        <li>Canvas allows for pixel manipulation, as we saw when we turned our video from
+            color to black and white. One downside of canvas is that it operates in what’s known
+            as immediate mode. This means that if you ever want to add more to the canvas,
+            you’re unable to simply add to what’s already there</li>
+        <li>By contrast, what you draw to SVG is accessible via the DOM, because its mode is
+            retained mode, meaning that the structure of the image is preserved in the XML
+            document that describes it. S</li>
+    </ul>
+
+    <!--    <a href="teamActivity.html" class="linkButton">Team Assignment</a>-->
+
+    <script type="module" src="../js/week8/week8.js"></script>
+    <p></p>
+</body>
+
+</html>

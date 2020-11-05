@@ -1,0 +1,67 @@
+h4:hover span {
+    color: #484848;
+    transform: rotate(10deg) translateX(40px) scale(1.5);
+}
+
+h4 span {
+    font-size: 30px;
+    color: #999999;
+    display: inline-block;
+    /*
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transition-delay: 50ms;
+*/
+    transition: transform 0.2s ease-out 50ms, color 0.1s linear 50ms;
+
+}
+
+#skewed {
+    transform: skew(12deg, 2deg);
+}
+
+@keyframes bike {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -360px 0;
+    }
+
+
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(-100px);
+    }
+
+    100% {
+        transform: translateX(100px);
+    }
+}
+
+#bike:after {
+    content: '';
+    width: 90px;
+    height: 92px;
+    background-image: url(../../images/week8/bike_sprite.png);
+    display: block;
+    margin: auto;
+    animation:
+        0.4s steps(4, end) infinite 50ms bike,
+        8s linear infinite 50ms move;
+    animation-play-state: paused;
+}
+
+#bike:hover:after {
+    animation-play-state: running;
+}
+
+.myCanvas {
+ border: dotted 2px black;
+    margin: 0 20px;
+
+}

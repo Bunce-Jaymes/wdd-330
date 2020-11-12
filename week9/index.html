@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="wdd, 330, jaymes, bunce, week 2, wdd-330">
+    <link rel="icon" href="../img/favicon.ico" type="image/ico" sizes="16x16">
+    <link href="../css/main.css" rel="stylesheet" type="text/css">
+    <link href="../css/week9/week9.css" rel="stylesheet" type="text/css">
+
+
+    <title>WDD 330 - Week 9</title>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html">
+            <h1 class="logo">WDD 330 Portfolio - Jaymes Bunce</h1>
+        </a>
+    </header>
+
+    <a href="../index.html" class="backLink">Back</a>
+
+    <h2>Notes for Week 9:</h2>
+
+    <p>See below/console for examples and tests from this week's reading.</p>
+
+    <h3>Managing The Modern Front-end Workflow Assignment:</h3>
+
+    <img class="week8Img" src="modern/Modern%20Workflow%201.jpg" alt="img">
+    <img class="week8Img" src="modern/Modern%20Workflow%202.jpg" alt="img">
+
+    <h3>Chapter 9 - The Window Object - Notes:</h3>
+
+    <div id='square'></div>
+
+    <ul class="week2List">
+        <li>The Browser Object Model (or BOM for short) is a collection of properties and
+            methods that contain information about the browser and computer screen</li>
+        <li>The Navigator object contains information about the browser
+            being used.</li>
+        <li>Its userAgent property will return information about the browser and
+            operating system being used.</li>
+        <li>The write() method simply writes a string of text to the page. If a page has
+            already loaded, it will completely replace the current document</li>
+        <li>Cookies are small files that are saved locally on a user’s computer. They were
+            invented by Netscape as a way of getting round HTTP being a stateless protocol.
+            This means that a browser does not remember anything from one request to
+            another.</li>
+    </ul>
+
+
+    <h3>Chapter 14 - HTML5 APIs - Notes:</h3>
+
+    <div id='hero' data-powers='flight superSpeed'>
+        Superman
+    </div>
+
+    <ul class="week2List">
+        <li>The data- attribute is a way of embedding data in a web page using custom
+            attributes that are ignored by the browser. They’re also private to a page, so are
+            not intended to be used by an external service – their sole purpose is to be used by a JavaScript program.</li>
+        <li>Data values must: Contain only lowercase letters, numbers, hyphens, dots, colons or
+            underscores and can include an optional string value.</li>
+        <li>The restriction of only using a string value can be overcome by encoding any
+            JavaScript object or value as a JSON string, then performing type-conversion later,
+            as required.</li>
+        <li>Worker() constructor function to create a new worker: "const worker = new Worker('task.js');"</li>
+        <li> HTML5 introduced the audio and video tags used to insert audio and video clips into a web page. It
+            also introduced a Media API for controlling the playback of the clips</li>
+        <li>A shim or a polyfill
+            comes in handy. These are libraries of code that allow you to use the APIs as
+            usual. They then fill in the necessary code that’s not provided natively by the
+            user’s browser.</li>
+        <li> The main difference
+            between them is that a shim is a piece of code that adds some missing
+            functionality to a browser, although the implementation method may differ
+            slightly from the standard API. A polyfill is a shim that achieves the same
+            functionality, while also using the API commands that would be used if the
+            feature was supported natively.</li>
+    </ul>
+
+    <a href="websocket.html" class="linkButton">Websocket Example</a>
+
+    <a href="teamActivity.html" class="linkButton">Team Assignment</a>
+
+    <script src="../js/week9/week9.js"></script>
+    <p></p>
+</body>
+
+</html>

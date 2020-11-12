@@ -4,6 +4,11 @@
     font-family: 'Open Sans';
 }
 
+.week8Img {
+    width: 100%;
+    height: auto;
+}
+
 .logo {
     background-color: darkslategray;
     text-align: center;

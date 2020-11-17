@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="wdd, 330, jaymes, bunce, week 2, wdd-330">
+    <link rel="icon" href="../img/favicon.ico" type="image/ico" sizes="16x16">
+    <link href="../css/main.css" rel="stylesheet" type="text/css">
+    <link href="../css/week10/week10.css" rel="stylesheet" type="text/css">
+
+
+    <title>WDD 330 - Week 10</title>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html">
+            <h1 class="logo">WDD 330 Portfolio - Jaymes Bunce</h1>
+        </a>
+    </header>
+
+    <a href="../index.html" class="backLink">Back</a>
+
+    <h2>Notes for Week 10:</h2>
+
+    <p>See below/console for examples and tests from this week's reading.</p>
+
+    <h3>MDN: Validating Forms Notes:</h3>
+
+    <form>
+        <label for="choose">Would you prefer a banana or cherry? (required)</label>
+        <input id="choose" name="i_like" required pattern="[Bb]anana|[Cc]herry" minlength="6" maxlength="6">
+        <div>
+            <label for="number">How many would you like?</label>
+            <input type="number" id="number" name="amount" value="1" min="1" max="10">
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+
+    <form novalidate>
+        <p>
+            <label for="mail">
+                <span>Please enter an email address:</span>
+                <input type="email" id="mail" name="mail" required minlength="8">
+                <span class="error" aria-live="polite"></span>
+            </label>
+        </p>
+        <button>Submit</button>
+    </form>
+
+    <ul class="week2List">
+        <li>"Before submitting data to the server, it is important to ensure all required form controls are filled out, in the correct format. This is called client-side form validation, and helps ensure data submitted matches the requirements set forth in the various form controls."</li>
+    </ul>
+    
+    <h3>MDN: Using Fetch Notes:</h3>
+
+    <ul class="week2List">
+        <li>"The Fetch API provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline, such as requests and responses."</li>
+        <li>Files can be uploaded using an HTML &lt;input type="file" /&gt; input element, FormData() and fetch().</li>
+        <li>The Headers interface allows you to create your own headers object via the Headers() constructor. A headers object is a simple multi-map of names to values</li>
+    </ul>
+
+
+    <!--    <a href="teamActivity.html" class="linkButton">Team Assignment</a>-->
+
+    <script src="../js/week10/week10.js"></script>
+    <p></p>
+</body></html>

@@ -42,5 +42,28 @@ export default class petView {
         </form>
 `;
     }
+    
+    showPetDetails(selectedPetObject, mainDisplayElement){
+        
+        
+        mainDisplayElement.innerHTML = "";
+        mainDisplayElement.innerHTML = `
+
+        <div id="petInfoDiv">
+            <button id="backToAllPetsButton">All Pets</button>
+            <h2>${selectedPetObject.name}</h2>
+            <img>
+            <img>
+            <p>Birthdate: ${selectedPetObject.birthday}</p>
+            <p>Breed: ${selectedPetObject.breed}</p>
+            <p>Date of Next Vet Visit: ${selectedPetObject.nextVetDate}</p>
+            <p>Time of Next Vet Visit: ${selectedPetObject.nextVetTime}</p>
+            <p>Medications: ${selectedPetObject.medication}</p>
+            <p>Height: ${selectedPetObject.height}</p>
+            <p>Weight: ${selectedPetObject.weight}</p>
+        </div>`
+        
+        console.log('this ran');
+    }
 
 }

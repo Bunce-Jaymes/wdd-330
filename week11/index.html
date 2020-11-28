@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="wdd, 330, jaymes, bunce, week 2, wdd-330">
+    <link rel="icon" href="../img/favicon.ico" type="image/ico" sizes="16x16">
+    <link href="../css/main.css" rel="stylesheet" type="text/css">
+    <link href="../css/week11/team.css" rel="stylesheet" type="text/css">
+
+
+    <title>WDD 330 - Week 10</title>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html">
+            <h1 class="logo">WDD 330 Portfolio - Jaymes Bunce</h1>
+        </a>
+    </header>
+
+    <a href="../index.html" class="backLink">Back</a>
+
+    <header>
+      <h1 class="text-center">Authentication Example</h1>
+      <nav></nav>
+    </header>
+    <div id="errors" class="errors hidden"></div>
+    <div id="login">
+      <form>
+        <div>
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Username"
+            value="user1@email.com"
+          />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+          />
+        </div>
+        <button type="button" class="btn btn-primary center-block">
+          Login
+        </button>
+      </form>
+      <div id="token-display"></div>
+    </div>
+
+    <div id="content" class="hidden">
+      <form name="postForm">
+        <div>
+          <label for="title">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            name="title"
+            placeholder="title"
+            required
+          />
+        </div>
+        <div>
+          <label for="content">Content</label>
+          <input
+            type="text"
+            class="form-control"
+            name="content"
+            placeholder="content"
+            required
+          />
+        </div>
+        <div id="postError"></div>
+
+        <input type="submit" id="createSubmit" />
+      </form>
+      <ul id="list"></ul>
+    </div>
+    <script type="module" src="../week11/client/week11.js"></script>
+</body></html>

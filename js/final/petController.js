@@ -18,18 +18,18 @@ export default class petController {
         this.petListElement = document.querySelector(this.petListElement);
 
         const addPetButton = document.querySelector('#addPetButton')
-        
+
         const removeAllPetsButton = document.querySelector('#removePetsButton');
-        
+
         removeAllPetsButton.addEventListener('click', a => {
             const check = confirm("This remove all of your pets and their data. This will be permanent, are you sure?");
-            
-            if (check === true){
+
+            if (check === true) {
                 localStorage.clear();
                 location.reload();
             }
-            
-            
+
+
         });
 
         addPetButton.addEventListener('click', e => {
@@ -41,12 +41,36 @@ export default class petController {
                 this.processPetData();
             })
         });
-        
+
         const petArray = this.petModel.getPets();
-        
+
         this.petView.showAllPetsList(petArray, this.petListElement);
 
+        let liItems = document.querySelectorAll('li');
+
+        for (let i = 0; i < liItems.length; i++) {
+            const liItemChildern = liItems[i].children;
+            const pItem = liItemChildern[0];
+
+            pItem.addEventListener('click', event => {
+                const petNameHTML = (event.srcElement).innerHTML;
+                
+                const petsArray = this.petModel.getPets();
+                const currentPet = petsArray.find(p => p.name === petNameHTML);
+                console.log('currentPet', currentPet);
+                
+                
+                this.petView.showPetDetails(currentPet, this.mainDisplayElement);
+                
+                const backButton = document.querySelector('#backToAllPetsButton');
+                
+                backButton.addEventListener('click', function() {
+                    location.reload();
+                });
+            })
+        }
     }
+
 
     processPetData() {
         const petName = document.querySelector('#petName').value;
@@ -72,6 +96,6 @@ export default class petController {
 
         this.petModel.savePet(this.pet);
 
-        confirm("like to continue");
+        alert(`${this.pet.name} was added successfully`);
     }
 }

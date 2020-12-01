@@ -34,7 +34,7 @@ export default class petView {
             <label>Pet's Name: <input id="petName" required></label>
             <label>Pet's Birthday: <input type="date" id="petBirthdate" required></label>
             <label>Pet's Next Vet Visit: <input type="date" id="petVisitDate"><input type="time" id="petVisitTime"></label>
-            <label>Pet's Breed: <select id="petBreed" required><option disabled selected value> -- select an option -- </option></select></label>
+            <label>Pet's Breed: <select id="petBreed" required></select></label>
             <label>Pet's Height: <input id="petHeight" type="number"></label>
             <label>Pet's Weight: <input id="petWeight" type="number"></label>
             <label>Pet's medication and frequency: <input id="petMedication"></label>

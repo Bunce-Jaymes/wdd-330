@@ -61,7 +61,7 @@ export default class petView {
             <button id="backToAllPetsButton">All Pets</button>
             <img id="editDetails" src="img/Edit_icon_(the_Noun_Project_30184).svg.png">
             <h2 id="petNameH2">${selectedPetObject.name}</h2>
-            <img id="photoFromAPI">
+            <img id="photoFromAPI" alt="dogImage">
             <p class="pElementDetails" id="birthDayDetails">Birthdate: ${selectedPetObject.birthday}</p>
             <p class="pElementDetails">Breed: ${selectedPetObject.breed}</p>
             <p class="pElementDetails">Next Vet Visit: ${selectedPetObject.nextVetDate} at ${selectedPetObject.nextVetTime}</p>

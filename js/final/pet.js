@@ -9,6 +9,6 @@ export default class pet{
         this.weight = weight;
         this.medication = medication;
         this.lastVetDate = lastVetDate;
-        this.lastVetNotes = lastVetNotes
+        this.lastVetNotes = lastVetNotes;
     }
 }

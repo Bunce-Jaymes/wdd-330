@@ -15,7 +15,7 @@ export default class petController {
         this.mainDisplayElement = document.querySelector(this.mainDisplayElement);
         this.petListElement = document.querySelector(this.petListElement);
 
-        const addPetButton = document.querySelector('#addPetButton')
+        const addPetButton = document.querySelector('#addPetButton');
         const removeAllPetsButton = document.querySelector('#removePetsButton');
 
         removeAllPetsButton.addEventListener('click', a => {
@@ -39,7 +39,7 @@ export default class petController {
             this.petView.showAllPetsList(petArray, this.petListElement);
 
             let liItems = document.querySelectorAll('li');
-            
+
             for (let i = 0; i < liItems.length; i++) {
                 const liItemChildern = liItems[i].children;
                 const pItem = liItemChildern[0];
@@ -47,7 +47,7 @@ export default class petController {
                 pItem.addEventListener('click', event => {
                     const petNameHTML = (event.srcElement).innerHTML;
                     this.showPetDetails(petNameHTML);
-                })
+                });
             }
 
             const editImgs = document.querySelectorAll('.editIcon');
@@ -70,11 +70,16 @@ export default class petController {
         this.petView.showPetDetails(currentPet, this.mainDisplayElement);
 
         this.petModel.getBreedInfoFromAPI("https://api.thedogapi.com/v1/breeds").then(data => {
-            const breedData = data.find(e => e.name === currentPet.breed);
-            this.petView.showBreedDetails(breedData);
 
-            const breedImageElement = document.querySelector('#photoFromAPI');
-            breedImageElement.src = breedData.image.url;
+            try {
+                const breedData = data.find(e => e.name === currentPet.breed);
+                this.petView.showBreedDetails(breedData);
+
+                const breedImageElement = document.querySelector('#photoFromAPI');
+                breedImageElement.src = breedData.image.url;
+            } catch (e) {
+                alert("There was an error when attempting to connect to the dog API.Please make sure you are connection to WIFI/cell service. And refresh the page");
+            }
         });
 
         const editImgs = document.querySelectorAll('#editDetails');
@@ -84,14 +89,14 @@ export default class petController {
                 this.editSavedPet(petName);
             });
         }
-        
+
         const lastVetVisitElement = document.querySelector('#lastVetVisitP');
-        lastVetVisitElement.addEventListener('click', function() {
+        lastVetVisitElement.addEventListener('click', function () {
             const lastVetVisitNotesElement = document.querySelector('#lastVetVisitNotesP');
             lastVetVisitNotesElement.classList.toggle("hidden");
             lastVetVisitElement.classList.toggle("viewedVetNotes");
         })
-        
+
         this.backButton();
     }
 
@@ -110,18 +115,23 @@ export default class petController {
     }) {
         this.petView.showAddPetView(this.mainDisplayElement);
 
-        await this.petModel.getBreedInfoFromAPI("https://api.thedogapi.com/v1/breeds").then(data => {
 
-            const dropdownBox = document.querySelector('#petBreed');
+        try {
+            await this.petModel.getBreedInfoFromAPI("https://api.thedogapi.com/v1/breeds").then(data => {
 
-            for (let i = 0; i < data.length; i++) {
-                const option = document.createElement('option');
+                const dropdownBox = document.querySelector('#petBreed');
 
-                option.innerHTML = data[i].name;
-                option.value = data[i].name;
-                dropdownBox.append(option);
-            }
-        });
+                for (let i = 0; i < data.length; i++) {
+                    const option = document.createElement('option');
+
+                    option.innerHTML = data[i].name;
+                    option.value = data[i].name;
+                    dropdownBox.append(option);
+                }
+            });
+        } catch (error) {
+            alert("Perfect Paws is currently unable to get the list of breads from the web. Please make sure you are connection to WIFI/cell service. And refresh the page");
+        }
 
         const formElement = document.querySelector('#newPetForm');
         formElement.addEventListener('submit', eventListener);
@@ -173,6 +183,7 @@ export default class petController {
     }
 
     async editSavedPet(petToGet, viewPetTrue = false) {
+
         const petsArray = this.petModel.getPets();
         const currentPet = petsArray.find(p => p.name === petToGet);
 

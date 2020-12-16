@@ -178,8 +178,8 @@ export default class petController {
         const currentPet = petsArray.find(p => p.name === petToGet);
 
         const listener = (e) => {
-            this.updatePet();
-            this.showPetDetails(petToGet);
+            this.updatePet(petToGet);
+            this.showPetDetails(this.pet.name);
         };
 
 
@@ -221,11 +221,11 @@ export default class petController {
         });
     }
 
-    updatePet() {
+    updatePet(petToGet) {
         this.processPetData();
         let petArray = this.petModel.getPets();
 
-        const petToChange = petArray.findIndex(x => x.name === this.pet.name);
+        const petToChange = petArray.findIndex(x => x.name === petToGet);
 
         petArray[petToChange] = this.pet;
         this.petModel.savePetArray(petArray);

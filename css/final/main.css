@@ -23,9 +23,7 @@ h1 {
     font-family: 'Brush Script MT', cursive;
 }
 
-header{
-    
-}
+header {}
 
 .editIcon {
     height: 4em;
@@ -44,7 +42,7 @@ header{
     display: grid;
     border: 1px solid;
     width: 100%;
-/*    height: 100vh !important;*/
+    /*    height: 100vh !important;*/
     background-color: #EAE7DC;
 }
 
@@ -76,8 +74,8 @@ li {
 }
 
 #petNameH2 {
-    font-size: 6em;
-    width: 48%;
+    font-size: 5em;
+    width: 44%;
     color: #E85A4f;
     font-family: 'Brush Script MT', cursive;
     word-wrap: break-word;
@@ -94,8 +92,24 @@ li {
     width: 50%;
 }
 
+@media (min-width: 1711px) {
+    #photoFromAPI {
+        width: 44%;
+    }
+
+    #petNameH2 {
+        width: 45%;
+    }
+}
+
+@media (min-width: 1050px){
+    .pElementDetails {
+        width: 100%
+    }
+}
+
 #photoFromAPI {
-    width: 48%;
+    width: 44%;
     height: auto;
     padding: 10px;
     border: 5px solid black;
@@ -108,7 +122,8 @@ li {
     order: -1;
 }
 
-.pElementDetails, .petName {
+.pElementDetails,
+.petName {
     font-size: 2em;
 }
 
@@ -130,7 +145,11 @@ li {
     margin-bottom: 2em;
 }
 
-.addButton button:hover, #submitButton:hover, #lastVetVisitP:hover, #backToAllPetsButton:hover, #editDetails:hover {
+.addButton button:hover,
+#submitButton:hover,
+#lastVetVisitP:hover,
+#backToAllPetsButton:hover,
+#editDetails:hover {
     background-color: #4F5D75;
     color: white;
 }
@@ -146,7 +165,8 @@ li {
     margin-bottom: 2em;
 }
 
-.removeButton button:hover, #cancelFormButton:hover {
+.removeButton button:hover,
+#cancelFormButton:hover {
     background-color: red;
 }
 
@@ -158,17 +178,20 @@ form {
     align-items: center;
 }
 
-label  {
+label {
     font-size: 1.3em;
     padding: 10px;
     width: 100%;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
     font-size: 1em
 }
 
-#petMedication, #notesFromLastVisit {
+#petMedication,
+#notesFromLastVisit {
     height: 6em;
     width: 90%;
 }
@@ -177,7 +200,8 @@ input, textarea, select {
     margin-left: 5px;
 }
 
-#submitButton, #cancelFormButton {
+#submitButton,
+#cancelFormButton {
     width: 90%;
 }
 
@@ -215,7 +239,8 @@ li:hover {
     border: 1px solid black;
 }
 
-.viewedVetNotes, #lastVetVisitNotesP{
+.viewedVetNotes,
+#lastVetVisitNotesP {
     background-color: #BFC0C0;
 }
 
@@ -229,10 +254,9 @@ li:hover {
 #apiInfoDetailsDiv h3 {
     font-size: 1.6em;
     text-decoration: underline;
-    
+
 }
 
 #apiInfoDetailsDiv P {
     font-size: 1.4em
 }
-

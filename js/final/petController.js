@@ -9,7 +9,6 @@ export default class petController {
         this.petView = new petView();
         this.pet = new pet();
         this.petModel = new petModel();
-        this.formEventListener;
     }
 
     init() {

@@ -29,44 +29,70 @@ export default class petController {
 
         const petArray = this.petModel.getPets();
 
-        this.petView.showAllPetsList(petArray, this.petListElement);
+        if (petArray.length === 0) {
+            const noPetsMessageElement = document.createElement('p');
 
-        let liItems = document.querySelectorAll('li');
+            noPetsMessageElement.innerHTML = "No pets currently saved, add one using the button below!";
+            noPetsMessageElement.id = "noPetsMessage";
 
-        for (let i = 0; i < liItems.length; i++) {
-            const liItemChildern = liItems[i].children;
-            const pItem = liItemChildern[0];
+            this.petListElement.append(noPetsMessageElement);
+        } else {
+            this.petView.showAllPetsList(petArray, this.petListElement);
 
-            pItem.addEventListener('click', event => {
-                const petNameHTML = (event.srcElement).innerHTML;
-                this.showPetDetails(petNameHTML);
-            })
-        }
+            let liItems = document.querySelectorAll('li');
+            
+            for (let i = 0; i < liItems.length; i++) {
+                const liItemChildern = liItems[i].children;
+                const pItem = liItemChildern[0];
 
-        const editImgs = document.querySelectorAll('.editIcon');
-        console.log('editImgs', editImgs);
+                pItem.addEventListener('click', event => {
+                    const petNameHTML = (event.srcElement).innerHTML;
+                    this.showPetDetails(petNameHTML);
+                })
+            }
 
-        for (let j = 0; j < editImgs.length; j++) {
-            editImgs[j].addEventListener('click', event => {
-                const clickedItem = event.srcElement;
-                const petNameToGet = (clickedItem.previousElementSibling).innerHTML;
-                console.log('petNameToGet', petNameToGet);
+            const editImgs = document.querySelectorAll('.editIcon');
 
-                this.editSavedPet(petNameToGet);
-            });
+            for (let j = 0; j < editImgs.length; j++) {
+                editImgs[j].addEventListener('click', event => {
+                    const clickedItem = event.srcElement;
+                    const petNameToGet = (clickedItem.previousElementSibling).innerHTML;
+
+                    this.editSavedPet(petNameToGet);
+                });
+            }
         }
     }
 
-   showPetDetails(petName) {
+    showPetDetails(petName) {
         const petsArray = this.petModel.getPets();
         const currentPet = petsArray.find(p => p.name === petName);
 
         this.petView.showPetDetails(currentPet, this.mainDisplayElement);
 
-         this.petModel.getBreedInfoFromAPI("https://api.thedogapi.com/v1/breeds").then(data => {
+        this.petModel.getBreedInfoFromAPI("https://api.thedogapi.com/v1/breeds").then(data => {
             const breedData = data.find(e => e.name === currentPet.breed);
             this.petView.showBreedDetails(breedData);
+
+            const breedImageElement = document.querySelector('#photoFromAPI');
+            breedImageElement.src = breedData.image.url;
         });
+
+        const editImgs = document.querySelectorAll('#editDetails');
+
+        for (let j = 0; j < editImgs.length; j++) {
+            editImgs[j].addEventListener('click', event => {
+                this.editSavedPet(petName);
+            });
+        }
+        
+        const lastVetVisitElement = document.querySelector('#lastVetVisitP');
+        lastVetVisitElement.addEventListener('click', function() {
+            const lastVetVisitNotesElement = document.querySelector('#lastVetVisitNotesP');
+            lastVetVisitNotesElement.classList.toggle("hidden");
+            lastVetVisitElement.classList.toggle("viewedVetNotes");
+        })
+        
         this.backButton();
     }
 
@@ -79,7 +105,10 @@ export default class petController {
         }
     }
 
-   async addPet() {
+    async addPet(eventListener = (e) => {
+        this.processPetData();
+        this.saveNewPet();
+    }) {
         this.petView.showAddPetView(this.mainDisplayElement);
 
         await this.petModel.getBreedInfoFromAPI("https://api.thedogapi.com/v1/breeds").then(data => {
@@ -94,11 +123,9 @@ export default class petController {
                 dropdownBox.append(option);
             }
         });
-       
-       const listener = (e) => { this.processPetData();};
-       
+
         const formElement = document.querySelector('#newPetForm');
-        formElement.addEventListener('submit', listener);
+        formElement.addEventListener('submit', eventListener);
     }
 
     backButton() {
@@ -108,7 +135,7 @@ export default class petController {
             location.reload();
         });
     }
-    
+
     retrieveFormInfo() {
         const petName = document.querySelector('#petName').value;
         const petBirthdate = document.querySelector('#petBirthdate').value;
@@ -118,15 +145,17 @@ export default class petController {
         const petHeight = document.querySelector('#petHeight').value;
         const petWeight = document.querySelector('#petWeight').value;
         const petMedication = document.querySelector('#petMedication').value;
-        
-        const petInfoArray = [petName, petBirthdate, petVisitDate, petVisitTime, petBreed, petHeight, petWeight, petMedication];
-        
+        const petLastVisitDate = document.querySelector('#lastVisitDate').value;
+        const petLastVisitNotes = document.querySelector('#notesFromLastVisit').value;
+
+        const petInfoArray = [petName, petBirthdate, petVisitDate, petVisitTime, petBreed, petHeight, petWeight, petMedication, petLastVisitDate, petLastVisitNotes];
+
         return petInfoArray;
     }
-    
-    processPetData() {
+
+    async processPetData() {
         const petInfoarray = this.retrieveFormInfo();
-        
+
         this.pet.name = petInfoarray[0];
         this.pet.birthday = petInfoarray[1];
         this.pet.nextVetDate = petInfoarray[2];
@@ -135,19 +164,26 @@ export default class petController {
         this.pet.height = petInfoarray[5];
         this.pet.weight = petInfoarray[6];
         this.pet.medication = petInfoarray[7];
-        
-        this.petModel.savePet(this.pet);
-
-        alert(`${this.pet.name} was added successfully`);
+        this.pet.lastVetDate = petInfoarray[8];
+        this.pet.lastVetNotes = petInfoarray[9];
     }
 
-    async editSavedPet(petToGet) {
+    async saveNewPet() {
+        this.petModel.savePet(this.pet);
+        alert(`${this.pet.name} was saved successfully`);
+    }
+
+    async editSavedPet(petToGet, viewPetTrue = false) {
         const petsArray = this.petModel.getPets();
         const currentPet = petsArray.find(p => p.name === petToGet);
-        console.log('currentPet', currentPet);
+
+        const listener = (e) => {
+            this.updatePet();
+            this.showPetDetails(petToGet);
+        };
 
 
-        await this.addPet();
+        await this.addPet(listener);
 
         const petName = document.querySelector('#petName');
         const petBirthdate = document.querySelector('#petBirthdate');
@@ -157,6 +193,8 @@ export default class petController {
         const petHeight = document.querySelector('#petHeight');
         const petWeight = document.querySelector('#petWeight');
         const petMedication = document.querySelector('#petMedication');
+        const petLastVisitDate = document.querySelector('#lastVisitDate');
+        const petLastVisitNotes = document.querySelector('#notesFromLastVisit');
 
         petName.value = currentPet.name;
         petBirthdate.value = currentPet.birthday;
@@ -166,11 +204,33 @@ export default class petController {
         petHeight.value = currentPet.height;
         petWeight.value = currentPet.weight;
         petMedication.value = currentPet.medication;
-        
-        const formElement = document.querySelector('#newPetForm');
-        
-        const listener = (e) => { this.processPetData();};
-        
-        formElement.removeEventListener('submit', (e) => { this.processPetData();});
+        petLastVisitDate.value = currentPet.lastVetDate;
+        petLastVisitNotes.value = currentPet.lastVetNotes;
+
+        let cancelFormButton = document.querySelector('#cancelFormButton');
+        cancelFormButton.remove();
+
+        cancelFormButton = document.createElement("button");
+        cancelFormButton.innerHTML = "Cancel";
+        const newPetForm = document.querySelector('#newPetForm');
+        newPetForm.append(cancelFormButton);
+        cancelFormButton.id = "cancelFormButton";
+
+        cancelFormButton.addEventListener('click', event => {
+            this.showPetDetails(petToGet);
+        });
+    }
+
+    updatePet() {
+        this.processPetData();
+        let petArray = this.petModel.getPets();
+
+        const petToChange = petArray.findIndex(x => x.name === this.pet.name);
+
+        petArray[petToChange] = this.pet;
+        this.petModel.savePetArray(petArray);
+
+        alert(`${this.pet.name} was updated successfully!`);
+
     }
 }

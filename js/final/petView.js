@@ -10,6 +10,7 @@ export default class petView {
 
             pItem.innerHTML = petsArray[i].name;
             pItem.classList.add("petName");
+            
 
             imgItem.src = "img/Edit_icon_(the_Noun_Project_30184).svg.png";
             imgItem.classList.add("editIcon");
@@ -27,20 +28,26 @@ export default class petView {
 
         mainDisplayElement.innerHTML = `
         <header>
-            <h1>Perfect Paws!</h1>
+            <h1>Add/Edit Pet Information</h1>
         </header>
 
         <form id="newPetForm">
             <label>Pet's Name: <input id="petName" required></label>
             <label>Pet's Birthday: <input type="date" id="petBirthdate" required></label>
             <label>Pet's Next Vet Visit: <input type="date" id="petVisitDate"><input type="time" id="petVisitTime"></label>
+            <label>Pet's Last Vet Visit: <input type="date" id="lastVisitDate"></label>
+            <label>Notes From Last Vet Visit: <textarea id="notesFromLastVisit"></textarea></label>
             <label>Pet's Breed: <select id="petBreed" required></select></label>
-            <label>Pet's Height: <input id="petHeight" type="number"></label>
-            <label>Pet's Weight: <input id="petWeight" type="number"></label>
-            <label>Pet's medication and frequency: <input id="petMedication"></label>
+            <label>Pet's Height (inches): <input id="petHeight" type="number"></label>
+            <label>Pet's Weight (lbs): <input id="petWeight" type="number"></label>
+            <label>Pet's Medication and Frequency: <textarea id="petMedication"></textarea></label>
 
-            <button id="submitButton" type="submit">Add my Pet!</button>      
+            <button id="submitButton" type="submit">Add/Update my Pet!</button>
+            
+            <button onclick="location.reload()" id="cancelFormButton">Cancel</button>
         </form>
+
+        
 `;
     }
 
@@ -52,34 +59,36 @@ export default class petView {
 
         <div id="petInfoDiv">
             <button id="backToAllPetsButton">All Pets</button>
-            <h2>${selectedPetObject.name}</h2>
-            <img>
-            <img>
-            <p>Birthdate: ${selectedPetObject.birthday}</p>
-            <p>Breed: ${selectedPetObject.breed}</p>
-            <p>Date of Next Vet Visit: ${selectedPetObject.nextVetDate}</p>
-            <p>Time of Next Vet Visit: ${selectedPetObject.nextVetTime}</p>
-            <p>Medications: ${selectedPetObject.medication}</p>
-            <p>Height: ${selectedPetObject.height}</p>
-            <p>Weight: ${selectedPetObject.weight}</p>
+            <img id="editDetails" src="img/Edit_icon_(the_Noun_Project_30184).svg.png">
+            <h2 id="petNameH2">${selectedPetObject.name}</h2>
+            <img id="photoFromAPI">
+            <p class="pElementDetails" id="birthDayDetails">Birthdate: ${selectedPetObject.birthday}</p>
+            <p class="pElementDetails">Breed: ${selectedPetObject.breed}</p>
+            <p class="pElementDetails">Next Vet Visit: ${selectedPetObject.nextVetDate} at ${selectedPetObject.nextVetTime}</p>
+            <p class="pElementDetails" id="lastVetVisitP">Last Vet Visit: ${selectedPetObject.lastVetDate}</p>
+            <p class="pElementDetails hidden" id="lastVetVisitNotesP">Notes from last Vet Visit: ${selectedPetObject.lastVetNotes}</p>
+            <p class="pElementDetails">Medications: ${selectedPetObject.medication}</p>
+            <p class="pElementDetails">Height: ${selectedPetObject.height} inches</p>
+            <p class="pElementDetails">Weight: ${selectedPetObject.weight} lbs</p>
         </div>`;
     }
 
     showBreedDetails(breedData) {
+        
+        const mainDisplay = document.querySelector('#petInfoDiv');
 
-        const petDetailsDiv = document.querySelector('#petInfoDiv');
         const apiInfoDiv = document.createElement('div');
 
         apiInfoDiv.innerHTML = `
-        <div>
-            <h3>Typical traits of a ${breedData.name}</h3>
-            <p>Typical Height: ${breedData.height.imperial} inches</p>
-            <p>Typical Weight: ${breedData.weight.imperial} lbs</p>
-            <p>Typical Life Span: ${breedData.life_span}</p>
-            <p>Typical Personality Traits: ${breedData.temperament}.</p>
-        </div>`;
+            <h3>Typical Traits of a ${breedData.name}</h3>
+            <p>Height: ${breedData.height.imperial} inches</p>
+            <p>Weight: ${breedData.weight.imperial} lbs</p>
+            <p>Average Life Span: ${breedData.life_span}</p>
+            <p>Personality Traits: ${breedData.temperament}.</p>`;
+        
+        apiInfoDiv.id = "apiInfoDetailsDiv";
 
-        petDetailsDiv.append(apiInfoDiv);
+        mainDisplay.append(apiInfoDiv);
     }
 
 }

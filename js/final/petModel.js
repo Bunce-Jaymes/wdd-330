@@ -11,10 +11,13 @@ export default class petModel {
         if (currentPetArray === null) {
             currentPetArray = [];
         }
-
+        
         currentPetArray.push(petToAdd);
-
         this.ls.setLocalStorage(currentPetArray);
+    }
+    
+    savePetArray(petArray){
+        this.ls.setLocalStorage(petArray);
     }
 
     getPets() {
